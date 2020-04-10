@@ -16,6 +16,11 @@ public class UserController {
 	
 	private final UserService userService;
 	
+	/*
+	 *  Jackson2HttpMessageConverter에 의해 요청본문 ( RequestBody ) 에 담겨있는
+	 *  json 데이터가 signUpForm 객체에 바인딩 될 수 있음.
+	 *  
+	 */
 	@PostMapping("/signup")
 	public void singUp(@RequestBody @Valid SignUpForm signUpForm, BindingResult bindingResult) {
 			
