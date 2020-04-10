@@ -7,6 +7,7 @@ import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import me.chillgu.demo.entity.User;
 
 /*
  *  dto 객체는 getter setter를 열어두자. 값이 변동될 가능성이 높다.
@@ -34,5 +35,19 @@ public class SignUpForm {
 	
 	@Email(message = "wrong email.")
 	private String email;
-
+	
+	/*
+	 *  dto 객체를 database에 저장할 때,
+	 *  엔티티 객체로 바로 converting할 수 있도록 매서드를 만들어 두었다.
+	 *  
+	 */
+	public User toEntity() {
+		
+		return User.builder()
+					.username(this.username)
+					.password(this.password)
+					.name(this.name)
+					.email(this.email)
+					.build();
+	}
 }
